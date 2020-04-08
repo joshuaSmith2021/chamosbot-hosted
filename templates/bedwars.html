@@ -74,7 +74,7 @@ var killChart = new Chart(ctx.kills, {
   type: 'line',
   data: {
     labels: [{{ display_times }}],
-    datasets: [{{ datasets.kills }}]
+    datasets: {{ datasets.kills }}
   },
   options: {}
 });
@@ -83,7 +83,7 @@ var finalsChart = new Chart(ctx.finals, {
   type: 'line',
   data: {
     labels: [{{ display_times }}],
-    datasets: [{{ datasets.finals }}]
+    datasets: {{ datasets.finals }}
   },
   options: {}
 });
@@ -92,7 +92,7 @@ var kdrChart = new Chart(ctx.kdrs, {
   type: 'line',
   data: {
     labels: [{{ display_times }}],
-    datasets: [{{ datasets.kdrs }}]
+    datasets: {{ datasets.kdrs }}
   },
   options: {}
 });
@@ -110,7 +110,7 @@ var winsChart = new Chart(ctx.wins, {
   type: 'line',
   data: {
     labels: [{{ display_times }}],
-    datasets: [{{ datasets.wins }}]
+    datasets: {{ datasets.wins }}
   },
   options: {}
 });
@@ -119,7 +119,7 @@ var winRateChart = new Chart(ctx.winRate, {
   type: 'line',
   data: {
     labels: [{{ display_times }}],
-    datasets: [{{ datasets.winRate }}]
+    datasets: {{ datasets.winRate }}
   },
   options: {}
 });
