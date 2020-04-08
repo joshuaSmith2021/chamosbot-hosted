@@ -52,7 +52,7 @@ def bedwars():
             datasets['kills'][user_index]['data'].append(bedwars['kills_bedwars'])
             datasets['finals'][user_index]['data'].append(bedwars['final_kills_bedwars'])
             datasets['kdrs'][user_index]['data'].append(round(bedwars['kills_bedwars'] / bedwars['deaths_bedwars'] * 1000) / 1000) 
-            datasets['fkdrs'][user_index]['data'].append(round(bedwars['final_kills_bedwars'] / bedwars['final_kills_bedwars'] * 1000) / 1000)
+            datasets['fkdrs'][user_index]['data'].append(round(bedwars['final_kills_bedwars'] / bedwars['final_deaths_bedwars'] * 1000) / 1000)
             datasets['wins'][user_index]['data'].append(bedwars['wins_bedwars'])
             datasets['winRate'][user_index]['data'].append(round(bedwars['wins_bedwars'] / bedwars['games_played_bedwars'] * 1000) / 1000)
 
