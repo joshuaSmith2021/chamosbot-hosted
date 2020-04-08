@@ -19,7 +19,8 @@
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
         <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Kills</a>
         <a href="#scroll-tab-2" class="mdl-layout__tab">Final Kills</a>
-        <a href="#scroll-tab-3" class="mdl-layout__tab">KDR's</a>
+        <a href="#scroll-tab-3" class="mdl-layout__tab">KDR</a>
+        <a href="#scroll-tab-6" class="mdl-layout__tab">FKDR</a>
         <a href="#scroll-tab-4" class="mdl-layout__tab">Wins</a>
         <a href="#scroll-tab-5" class="mdl-layout__tab">Win Rate</a>
       </div>
@@ -42,8 +43,14 @@
       </section>
       <section class="mdl-layout__tab-panel" id="scroll-tab-3">
         <div class="page-content">
-          <h2>KDR's</h2>
+          <h2>KDR</h2>
           <canvas id="kdrsChart"></canvas>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+        <div class="page-content">
+          <h2>FKDR</h2>
+          <canvas id="fkdrsChart"></canvas>
         </div>
       </section>
       <section class="mdl-layout__tab-panel" id="scroll-tab-4">
@@ -66,6 +73,7 @@ var ctx = {
   kills: document.querySelector('#killsChart').getContext('2d'),
   finals: document.querySelector('#finalsChart').getContext('2d'),
   kdrs: document.querySelector('#kdrsChart').getContext('2d'),
+  fkdr: document.querySelector('#fkdrsChart').getContext('2d'),
   wins: document.querySelector('#winsChart').getContext('2d'),
   winRate: document.querySelector('#winRateChart').getContext('2d')
 };
@@ -97,14 +105,14 @@ var kdrChart = new Chart(ctx.kdrs, {
   options: {}
 });
 
-//var fkdrChart = new Chart(ctx.fkdr, {
-//  type: 'line',
-// data: {
-//    labels: {{ display_times | safe }},
-//    datasets: [{{ datasets.fkdr | safe }}]
-//  },
-//  options: {}
-//});
+var fkdrChart = new Chart(ctx.fkdr, {
+  type: 'line',
+  data: {
+    labels: {{ display_times | safe }},
+    datasets: [{{ datasets.fkdrs | safe }}]
+  },
+  options: {}
+});
 
 var winsChart = new Chart(ctx.wins, {
   type: 'line',
