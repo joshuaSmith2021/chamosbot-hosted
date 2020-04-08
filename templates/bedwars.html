@@ -73,8 +73,8 @@ var ctx = {
 var killChart = new Chart(ctx.kills, {
   type: 'line',
   data: {
-    labels: [{{ display_times }}],
-    datasets: {{ datasets.kills }}
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.kills | safe }}
   },
   options: {}
 });
@@ -82,8 +82,8 @@ var killChart = new Chart(ctx.kills, {
 var finalsChart = new Chart(ctx.finals, {
   type: 'line',
   data: {
-    labels: [{{ display_times }}],
-    datasets: {{ datasets.finals }}
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.finals | safe }}
   },
   options: {}
 });
@@ -91,8 +91,8 @@ var finalsChart = new Chart(ctx.finals, {
 var kdrChart = new Chart(ctx.kdrs, {
   type: 'line',
   data: {
-    labels: [{{ display_times }}],
-    datasets: {{ datasets.kdrs }}
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.kdrs | safe }}
   },
   options: {}
 });
@@ -100,8 +100,8 @@ var kdrChart = new Chart(ctx.kdrs, {
 //var fkdrChart = new Chart(ctx.fkdr, {
 //  type: 'line',
 // data: {
-//    labels: [{{ display_times }}],
-//    datasets: [{{ datasets.fkdr }}]
+//    labels: {{ display_times | safe }},
+//    datasets: [{{ datasets.fkdr | safe }}]
 //  },
 //  options: {}
 //});
@@ -109,8 +109,8 @@ var kdrChart = new Chart(ctx.kdrs, {
 var winsChart = new Chart(ctx.wins, {
   type: 'line',
   data: {
-    labels: [{{ display_times }}],
-    datasets: {{ datasets.wins }}
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.wins | safe }}
   },
   options: {}
 });
@@ -118,8 +118,8 @@ var winsChart = new Chart(ctx.wins, {
 var winRateChart = new Chart(ctx.winRate, {
   type: 'line',
   data: {
-    labels: [{{ display_times }}],
-    datasets: {{ datasets.winRate }}
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.winRate | safe }}
   },
   options: {}
 });
