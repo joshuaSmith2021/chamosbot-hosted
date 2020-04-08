@@ -109,7 +109,7 @@ var fkdrChart = new Chart(ctx.fkdr, {
   type: 'line',
   data: {
     labels: {{ display_times | safe }},
-    datasets: [{{ datasets.fkdrs | safe }}]
+    datasets: {{ datasets.fkdrs | safe }}
   },
   options: {}
 });
@@ -129,7 +129,15 @@ var winRateChart = new Chart(ctx.winRate, {
     labels: {{ display_times | safe }},
     datasets: {{ datasets.winRate | safe }}
   },
-  options: {}
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
 });
   </script>
 </body>
