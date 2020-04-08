@@ -28,6 +28,8 @@
         <a href="#scroll-tab-6" class="mdl-layout__tab">FKDR</a>
         <a href="#scroll-tab-4" class="mdl-layout__tab">Wins</a>
         <a href="#scroll-tab-5" class="mdl-layout__tab">Win Rate</a>
+        <a href="#scroll-tab-7" class="mdl-layout__tab">KPG</a>
+        <a href="#scroll-tab-8" class="mdl-layout__tab">FKPG</a>
       </div>
     </header>
     <div class="mdl-layout__drawer">
@@ -70,6 +72,18 @@
           <canvas id="winRateChart"></canvas>
         </div>
       </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-7">
+        <div class="page-content">
+          <h2>Kills per Game</h2>
+          <canvas id="kpgChart"></canvas>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-8">
+        <div class="page-content">
+          <h2>Final Kills per Game</h2>
+          <canvas id="fkpgChart"></canvas>
+        </div>
+      </section>
     </main>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
@@ -80,7 +94,9 @@ var ctx = {
   kdrs: document.querySelector('#kdrsChart').getContext('2d'),
   fkdr: document.querySelector('#fkdrsChart').getContext('2d'),
   wins: document.querySelector('#winsChart').getContext('2d'),
-  winRate: document.querySelector('#winRateChart').getContext('2d')
+  winRate: document.querySelector('#winRateChart').getContext('2d'),
+  winRate: document.querySelector('#kpgChart').getContext('2d'),
+  winRate: document.querySelector('#fkpgChart').getContext('2d')
 };
 
 var killChart = new Chart(ctx.kills, {
@@ -144,6 +160,25 @@ var winRateChart = new Chart(ctx.winRate, {
     }
   }
 });
+
+var kpgChart = new Chart(ctx.kpg, {
+  type: 'line',
+  data: {
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.kpg | safe }}
+  },
+  options: {}
+});
+
+var fkpgChart = new Chart(ctx.fkpg, {
+  type: 'line',
+  data: {
+    labels: {{ display_times | safe }},
+    datasets: {{ datasets.fkpg | safe }}
+  },
+  options: {}
+});
+
   </script>
 </body>
 </html>
