@@ -156,15 +156,7 @@ window.onload = function() {
       labels: {{ display_times | safe }},
       datasets: {{ datasets.winRate | safe }}
     },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
+    options: {}
   });
 
   var kpgChart = new Chart(ctx.kpg, {
