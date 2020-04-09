@@ -89,101 +89,102 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
   <script>
-var ctx = {
-  kills: document.querySelector('#killsChart').getContext('2d'),
-  finals: document.querySelector('#finalsChart').getContext('2d'),
-  kdrs: document.querySelector('#kdrsChart').getContext('2d'),
-  fkdr: document.querySelector('#fkdrsChart').getContext('2d'),
-  wins: document.querySelector('#winsChart').getContext('2d'),
-  winRate: document.querySelector('#winRateChart').getContext('2d'),
-  winRate: document.querySelector('#kpgChart').getContext('2d'),
-  winRate: document.querySelector('#fkpgChart').getContext('2d')
-};
+window.onload = function() {
+  var ctx = {
+    kills: document.querySelector('#killsChart').getContext('2d'),
+    finals: document.querySelector('#finalsChart').getContext('2d'),
+    kdrs: document.querySelector('#kdrsChart').getContext('2d'),
+    fkdr: document.querySelector('#fkdrsChart').getContext('2d'),
+    wins: document.querySelector('#winsChart').getContext('2d'),
+    winRate: document.querySelector('#winRateChart').getContext('2d'),
+    winRate: document.querySelector('#kpgChart').getContext('2d'),
+    winRate: document.querySelector('#fkpgChart').getContext('2d')
+  };
 
-var killChart = new Chart(ctx.kills, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.kills | safe }}
-  },
-  options: {}
-});
+  var killChart = new Chart(ctx.kills, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.kills | safe }}
+    },
+    options: {}
+  });
 
-var finalsChart = new Chart(ctx.finals, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.finals | safe }}
-  },
-  options: {}
-});
+  var finalsChart = new Chart(ctx.finals, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.finals | safe }}
+    },
+    options: {}
+  });
 
-var kdrChart = new Chart(ctx.kdrs, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.kdrs | safe }}
-  },
-  options: {}
-});
+  var kdrChart = new Chart(ctx.kdrs, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.kdrs | safe }}
+    },
+    options: {}
+  });
 
-var fkdrChart = new Chart(ctx.fkdr, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.fkdrs | safe }}
-  },
-  options: {}
-});
+  var fkdrChart = new Chart(ctx.fkdr, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.fkdrs | safe }}
+    },
+    options: {}
+  });
 
-var winsChart = new Chart(ctx.wins, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.wins | safe }}
-  },
-  options: {}
-});
+  var winsChart = new Chart(ctx.wins, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.wins | safe }}
+    },
+    options: {}
+  });
 
-var winRateChart = new Chart(ctx.winRate, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.winRate | safe }}
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
+  var winRateChart = new Chart(ctx.winRate, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.winRate | safe }}
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
     }
+  });
+
+  var kpgChart = new Chart(ctx.kpg, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.kpg | safe }}
+    },
+    options: {}
+  });
+
+  var fkpgChart = new Chart(ctx.fkpg, {
+    type: 'line',
+    data: {
+      labels: {{ display_times | safe }},
+      datasets: {{ datasets.fkpg | safe }}
+    },
+    options: {}
+  });
+
+  if (window.innerWidth < 650) {
+    alert('It looks like you are viewing this page on a mobile device. For a better experience, please use view this page with your phone turned horizontally.');
   }
-});
-
-var kpgChart = new Chart(ctx.kpg, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.kpg | safe }}
-  },
-  options: {}
-});
-
-var fkpgChart = new Chart(ctx.fkpg, {
-  type: 'line',
-  data: {
-    labels: {{ display_times | safe }},
-    datasets: {{ datasets.fkpg | safe }}
-  },
-  options: {}
-});
-
-if (window.innerWidth < 650) {
-  alert('It looks like you are viewing this page on a mobile device. For a better experience, please use view this page with your phone turned horizontally.');
-}
-
+};
   </script>
 </body>
 </html>
