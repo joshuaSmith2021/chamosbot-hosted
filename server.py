@@ -3,13 +3,14 @@ import requests
 
 import tools
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return render_template('index.html')
+    print('root')
+    return send_from_directory('templates', 'index.html')
 
 
 @app.route('/bedwars')
