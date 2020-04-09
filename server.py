@@ -62,9 +62,12 @@ def bedwars():
     for field, lst in datasets.items():
         for i in range(len(lst)):
             lst[i]['borderColor'] = colores[i]
+            lst[i]['data'].reverse()
 
         # put fields in json format for javascript to read later
-        datasets[field] = json.dumps(lst[::-1])
+        datasets[field] = json.dumps(lst)
+        if field == 'kills':
+            print(lst)
 
     print('Rendering template...')
     return render_template('bedwars.html', display_times=json.dumps(display_times), datasets=datasets)
