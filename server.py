@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    print('root')
     return send_from_directory('templates', 'index.html')
 
 
