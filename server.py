@@ -8,15 +8,21 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
-def greeting():
-    return 'Hello, world!'
+def home_page():
+    return render_template('index.html')
+
 
 @app.route('/bedwars')
 @app.route('/bedwars/')
 def bedwars():
     # get a list of the usernames, make sure they are lowercase
     usernames = list(map(lambda x: x.lower(), request.args.get('igns').split('.')))
-    stat_file = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/data.json').json()
+    data_file = request.args.get('file')
+
+    req = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/{0}.json'.format(data_file))
+    if req.status_code != 200:
+        return 'Oops! Looks like the server couldn\'t find data for the time frame you requested! Try a different time range.<script>console.log("Requested file: {0}.json")</script>'.format(data_file)
+    stat_file = req.json()
 
     # list of timestamps that have data for the specified usernames
     times = []
@@ -66,8 +72,6 @@ def bedwars():
 
         # put fields in json format for javascript to read later
         datasets[field] = json.dumps(lst)
-        if field == 'kills':
-            print(lst)
 
     print('Rendering template...')
     return render_template('bedwars.html', display_times=json.dumps(display_times), datasets=datasets)
