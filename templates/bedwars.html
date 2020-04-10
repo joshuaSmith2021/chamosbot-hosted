@@ -39,6 +39,17 @@ h2 {
     </header>
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Chamosbot Online</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">Select Usernames</a>
+        <a id="timeChanger" class="mdl-navigation__link" href="#">Change Time Range</a>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect"
+    for="timeChanger">
+          <li class="mdl-menu__item time-option" data-file="today">24 Hours</li>
+          <li class="mdl-menu__item time-option" data-file="twodays">48 Hours</li>
+          <li class="mdl-menu__item time-option" data-file="thisweek">Seven Days</li>
+          <li class="mdl-menu__item time-option" disabled>30 Days</li>
+        </ul>
+      </nav>
     </div>
     <main class="mdl-layout__content">
       <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
@@ -179,6 +190,20 @@ window.onload = function() {
 
   if (window.innerWidth < 650) {
     alert('It looks like you are viewing this page on a mobile device. For a better experience, please use view this page with your phone turned horizontally.');
+  }
+  
+  var usernames = {{ usernames | safe }};
+
+  var statLinks = document.getElementsByClassName('time-option');
+
+  for(i = 0; i < statLinks.length; i++) {
+    statLinks[i].addEventListener('click', function() {
+      var file = this.dataset.file;
+      var ignFormat = usernames.join('.');
+
+      var path = `/bedwars?file=${file}&igns=${ignFormat}`;
+      window.location.href = path;
+    });
   }
 };
   </script>
