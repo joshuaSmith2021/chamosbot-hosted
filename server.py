@@ -21,7 +21,9 @@ def bedwars():
 
     req = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/{0}.json'.format(data_file))
     if req.status_code != 200:
-        return 'Oops! Looks like the server couldn\'t find data for the time frame you requested! Try a different time range.<script>console.log("Requested file: {0}.json")</script>'.format(data_file)
+        # File not found, revert to default file
+        fallback_file = 'today'
+        req = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/{0}.json'.format(fallback_file))
     stat_file = req.json()
 
     # list of timestamps that have data for the specified usernames
