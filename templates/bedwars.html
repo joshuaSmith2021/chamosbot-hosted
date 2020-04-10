@@ -202,7 +202,9 @@ window.onload = function() {
       var ignFormat = usernames.join('.');
 
       var path = `/bedwars?file=${file}&igns=${ignFormat}`;
-      window.location.href = path;
+      if (this.attributes.getNamedItem('disabled') === null) {
+        window.location.href = path;
+      }
     });
   }
 };
