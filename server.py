@@ -94,7 +94,6 @@ def bedwars():
                         death_data = datasets['deaths'][j]['data']
                         kills = kill_data[0] - kill_data[-1]
                         deaths = death_data[0] - death_data[-1]
-                        print(deaths)
                         result = round(kills / deaths * 1000) / 1000
                     elif dset[1:] == 'fkdr':
                         kill_data = datasets['finals'][j]['data']
@@ -113,7 +112,6 @@ def bedwars():
                     #   in the specified time frame, so zerodivision happens.
                     #   Just return not available... for now...
                     result = 'Not Available'
-                    #raise(err)
             else:
                 dataset = datasets[dset][j]['data']
                 result   = dataset[0] - dataset[-1]
@@ -130,6 +128,6 @@ def bedwars():
         datasets[field] = json.dumps(lst)
 
     datasets['table'] = json.dumps(performances)
+    print(datasets['table'])
     print('Rendering template...')
-    print(datasets)
     return render_template('bedwars.html', display_times=json.dumps(display_times), datasets=datasets, usernames=json.dumps(usernames))
