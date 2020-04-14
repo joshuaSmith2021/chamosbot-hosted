@@ -18,11 +18,13 @@ def bedwars():
     # get a list of the usernames, make sure they are lowercase
     usernames = list(map(lambda x: x.lower(), request.args.get('igns').split('.')))
     data_file = request.args.get('file')
+    actual_file = data_file
 
     req = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/{0}.json'.format(data_file))
     if req.status_code != 200:
         # File not found, revert to default file
         fallback_file = 'today'
+        actual_file = fallback_file
         req = requests.get('https://raw.githubusercontent.com/joshuaSmith2021/chamosbot-data/master/{0}.json'.format(fallback_file))
     stat_file = req.json()
 
@@ -127,6 +129,10 @@ def bedwars():
         # put fields in json format for javascript to read later
         datasets[field] = json.dumps(lst)
 
+    time_string_conversions = {'today': '24 hours', 'twodays': '48 hours', 'thisweek': 'seven days'}
+
     datasets['table'] = json.dumps(performances)
     print('Rendering template...')
-    return render_template('bedwars.html', display_times=json.dumps(display_times), datasets=datasets, usernames=json.dumps(usernames))
+    return render_template('bedwars.html', display_times=json.dumps(display_times),
+                           datasets=datasets, usernames=json.dumps(usernames),
+                           time_string=time_string_conversions[actual_file])
