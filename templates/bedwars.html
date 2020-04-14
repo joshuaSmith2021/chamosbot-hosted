@@ -31,6 +31,7 @@ h2 {
         <a href="#scroll-tab-2" class="mdl-layout__tab">Final Kills</a>
         <a href="#scroll-tab-3" class="mdl-layout__tab">KDR</a>
         <a href="#scroll-tab-6" class="mdl-layout__tab">FKDR</a>
+        <a href="#scroll-tab-9" class="mdl-layout__tab">Overview</a>
         <a href="#scroll-tab-4" class="mdl-layout__tab">Wins</a>
         <a href="#scroll-tab-5" class="mdl-layout__tab">Win Rate</a>
         <a href="#scroll-tab-7" class="mdl-layout__tab">KPG</a>
@@ -74,6 +75,25 @@ h2 {
         <div class="page-content">
           <h2>Final Kill/Death Ratio</h2>
           <canvas id="fkdrsChart"></canvas>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-9">
+        <div class="page-content">
+          <h2>Overview</h2>
+          <table class="mdl-data-table mdl-js-data-table" style="margin:auto">
+            <tbody>
+              {% for row in dataset.table %}
+                <tr>
+                {% for cell in row %}
+                  <td>{{ cell }}</td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <p>
+            This tab shows the stats of the player(s) in the given time frame. If you are viewing the stats for this week, for example, the kills row will be the number of kills each user has gotten in the past week. Fields such as FKDR and Win% are calculated based on how many final kills a player has earned this week and how many final deaths they have taken this week.
+          </p>
         </div>
       </section>
       <section class="mdl-layout__tab-panel" id="scroll-tab-4">
