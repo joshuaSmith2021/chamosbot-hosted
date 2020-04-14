@@ -128,6 +128,5 @@ def bedwars():
         datasets[field] = json.dumps(lst)
 
     datasets['table'] = json.dumps(performances)
-    print(datasets['table'])
     print('Rendering template...')
     return render_template('bedwars.html', display_times=json.dumps(display_times), datasets=datasets, usernames=json.dumps(usernames))
