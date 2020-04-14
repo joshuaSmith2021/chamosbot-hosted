@@ -81,15 +81,8 @@ h2 {
         <div class="page-content">
           <h2>Overview</h2>
           <table class="mdl-data-table mdl-js-data-table" style="margin:auto">
-            <tbody>
-              {% for row in dataset.table %}
-                <tr>
-                {% for cell in row %}
-                  <td>{{ cell }}</td>
-                {% endfor %}
-                </tr>
-              {% endfor %}
-            </tbody>
+            <thead><tr id="tableHead"></tr></thead>
+            <tbody id="tableBody"></tbody>
           </table>
           <p>
             This tab shows the stats of the player(s) in the given time frame. If you are viewing the stats for this week, for example, the kills row will be the number of kills each user has gotten in the past week. Fields such as FKDR and Win% are calculated based on how many final kills a player has earned this week and how many final deaths they have taken this week.
@@ -226,6 +219,23 @@ window.onload = function() {
         window.location.href = path;
       }
     });
+  }
+    
+  var tableData = {{ datasets.table | safe }};
+
+  for (i = 0; i < tableData[0].length; i++) {
+    document.querySelector('#tableHead').innerHTML += `<th>${tableData[0][i]}</th>`;
+  }
+
+  var specialTable = document.querySelector('#tableBody');
+
+  for (i = 1; i < tableData.length; i++) {
+    var row = tableData[i];
+    var cells = '';
+    for (j = 0; j < row.length; j++) {
+      cells += `<td>${row[j]}</td>`;
+    }
+    specialTable.innerHTML += `<tr>${cells}</tr>`;
   }
 };
   </script>
