@@ -1,0 +1,25 @@
+/* Table of contents */
+.toc {
+  border-left: 5px solid #dedede;
+  max-width: 400px;
+  margin: auto;
+} .toc__title {
+  text-align: center;
+} .toc__subtitle {
+  text-align: center;
+  color: #555555;
+  font-size: 15px;
+}
+
+.cmd-section {
+  max-width: 400px;
+  margin: auto;
+} .cmd-section__title {
+  text-align: center;
+} .cmd-section__text {
+  /* No styles defined here, yet */
+}
+
+.code {
+  font-family: 'Roboto Mono', 'Courier New', Courier;
+}
