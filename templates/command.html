@@ -46,19 +46,19 @@
           <p class="toc__subtitle code">!stats &lt;minigame&gt; &lt;username(s)&gt; -flags</p>
           <ul class="mdl-list toc">
             <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content toc__item" data-section="parameters">
+              <a class="mdl-list__item-primary-content toc__item" href="#parameters">
                 Parameters
-              </span>
+              </a>
             </li>
             <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content toc__item" data-section="flags">
+              <a class="mdl-list__item-primary-content toc__item" href="#flags">
                 Flags
-              </span>
+              </a>
             </li>
             <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content toc__item" data-section="examples">
+              <a class="mdl-list__item-primary-content toc__item" href="#examples">
                 Examples
-              </span>
+              </a>
             </li>
           </ul>
           <div class="cmd-section" id="parameters">
@@ -67,7 +67,7 @@
           </div>
           <div class="cmd-section" id="flags">
             <h4 class="cmd-section__title">Flags</h4>
-            <p class="cmd-section__text">With some minigames, you can specify a specific game mode to pull stats from. For bedwars, the format for one of these flags is -&lt;number of teams&gt;_&lt;players per team&gt; . In SkyWars, it would be -&lt;team size&gt;_&lt;insane/normal (optional)&gt; For example, the flag for Bedwars solo would be -eight_one , because there are eight teams in the game, with each team having one player. The flag for team insane skywars would be -solo_insane .</p>
+            <p class="cmd-section__text">With some minigames, you can specify a specific game mode to pull stats from. For bedwars, the format for one of these flags is -&lt;number of teams&gt;_&lt;players per team&gt; . In SkyWars, it would be -&lt;team size&gt;_&lt;insane/normal (optional)&gt; For example, the flag for Bedwars solo would be -eight_one , because there are eight teams in the game, with each team having one player. The flag for team insane skywars would be -team_insane .</p>
           </div>
           <div class="cmd-section" id="examples">
             <h4 class="cmd-section__title">Examples</h4>
@@ -83,13 +83,46 @@
 				  </span>
 				</span>
 			  </li>
+			  <li class="mdl-list__item mdl-list__item--three-line">
+				<span class="mdl-list__item-primary-content">
+				  <i class="material-icons mdl-list__item-avatar" style="color:#777777;background-color:#ffffff;">poll</i>
+				  <span class="code compact">!stats sw parcerx i41</span>
+				  <span class="mdl-list__item-text-body">
+					Returns Skywars stats for parcerx and i41.
+				  </span>
+				</span>
+			  </li>
+			  <li class="mdl-list__item mdl-list__item--three-line">
+				<span class="mdl-list__item-primary-content">
+				  <i class="material-icons mdl-list__item-avatar" style="color:#777777;background-color:#ffffff;">poll</i>
+				  <span class="code compact">!stats bw parcerx -eight_one</span>
+				  <span class="mdl-list__item-text-body">
+					Returns solo Bedwars stats for parcerx.
+				  </span>
+				</span>
+			  </li>
+			  <li class="mdl-list__item mdl-list__item--three-line">
+				<span class="mdl-list__item-primary-content">
+				  <i class="material-icons mdl-list__item-avatar" style="color:#777777;background-color:#ffffff;">poll</i>
+				  <span class="code compact">!stats sw parcerx -team</span>
+				  <span class="mdl-list__item-text-body">
+					Returns team Skywars stats for parcerx.
+				  </span>
+				</span>
+			  </li>
+			  <li class="mdl-list__item mdl-list__item--three-line">
+				<span class="mdl-list__item-primary-content">
+				  <i class="material-icons mdl-list__item-avatar" style="color:#777777;background-color:#ffffff;">poll</i>
+				  <span class="code compact">!stats sw parcerx i41 -solo_insane</span>
+				  <span class="mdl-list__item-text-body">
+					Returns solo insane Skywars stats for parcerx.
+				  </span>
+				</span>
+			  </li>
 			</ul>
           </div>
         </div>
       </main>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-	<script src="../static/script/command.js"></script>
-    <script src="{{ url_for('static', filename='script/command.js') }}"></script>
   </body>
 </html>
