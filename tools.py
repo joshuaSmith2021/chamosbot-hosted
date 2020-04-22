@@ -52,6 +52,17 @@ def generate_html(elements):
     return current_html
 
 
+def parse_yaml(path):
+    result = None
+    with open(path) as stream:
+        try:
+            result = yaml.safe_load(stream)
+        except yaml.YAMLError as err:
+            print(err)
+            result = None
+    return result
+
+
 def get_command(name):
     yaml_file_name = '{0}.yaml'.format(name)
     yaml_file_path = 'data/commands/{0}'.format(yaml_file_name)

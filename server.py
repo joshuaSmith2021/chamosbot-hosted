@@ -10,7 +10,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return send_from_directory('static', 'index.html')
+    commands  = tools.parse_yaml('data/commands/commands.yaml')
+    statfiles = tools.parse_yaml('data/statfiles.yaml')
+    print('Root called')
+    return render_template('index.html', commands=commands, statfiles=statfiles)
 
 
 @app.route('/commands/<command_name>')

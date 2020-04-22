@@ -1,0 +1,9 @@
+---
+- prefix: "!stats"
+  id: stats
+  icon: poll
+  description: Sends a table with some stats for a certain minigame.
+- prefix: "!addkey"
+  id: addkey
+  icon: vpn_key
+  description: Add a Hypixel API Key to a server.
