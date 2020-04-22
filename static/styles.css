@@ -1,3 +1,29 @@
+.demo-card-wide {
+  margin: auto;
+/*
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+*/
+}
+
+.demo-card-wide.mdl-card {
+  max-width: 512px;
+}
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px !important;
+  background: url('https://i2.wp.com/files.123freevectors.com/wp-content/original/130893-blue-triangle-geometric-background-vector.jpg?w=800') center / cover;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+/* Everything below this is from Google, see the license statement below */
+
 /**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
