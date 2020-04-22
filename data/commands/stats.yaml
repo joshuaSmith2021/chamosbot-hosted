@@ -1,0 +1,71 @@
+---
+prefix: "!stats"
+format: "!stats <minigame> <username(s)> -flags"
+sections:
+  - id: parameters
+    display: Parameters
+    innerHTML:
+      - type: p.cmd-section__text
+        content: The !stats command has two parameters&#58; minigame, and username(s). Minigame is the minigame (ie skywars or bedwars) that the bot should get stats from. Username(s) is a space-separated list of usernames that the bot should fetch stats from.
+  - id: flags
+    display: Flags
+    innerHTML:
+      - type: p.cmd-section__text
+        content: With some minigames, you can specify a specific game mode to pull stats from. For bedwars, the format for one of these flags is -<number of teams>_<players per team> . In SkyWars, it would be -<team size>_<insane/normal (optional)> For example, the flag for Bedwars solo would be -eight_one , because there are eight teams in the game, with each team having one player. The flag for team insane skywars would be -team_insane .
+  - id: examples
+    display: Examples
+    innerHTML:
+      - type: p.cmd-section__text
+        content: For reference, here is a list of some example commands, along with a description with what exactly the command would result in.
+      - type: ul.mdl-list
+        content:
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: poll
+                  - type: span.code.compact
+                    content: "!stats bw parcerx"
+                  - type: span.mdl-list__item-text-body
+                    content: Returns Bedwars stats for parcerx.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: poll
+                  - type: span.code.compact
+                    content: "!stats sw parcerx i41"
+                  - type: span.mdl-list__item-text-body
+                    content: Returns Skywars stats for parcerx and i41.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: poll
+                  - type: span.code.compact
+                    content: "!stats bw parcerx -eight_one"
+                  - type: span.mdl-list__item-text-body
+                    content: Returns solo Bedwars stats for parcerx.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: poll
+                  - type: span.code.compact
+                    content: "!stats sw parcerx -team"
+                  - type: span.mdl-list__item-text-body
+                    content: Returns team Skywars stats for parcerx.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: poll
+                  - type: span.code.compact
+                    content: "!stats sw parcerx i41 -solo_insane"
+                  - type: span.mdl-list__item-text-body
+                    content: Returns solo insane Bedwars stats for parcerx and i41.
