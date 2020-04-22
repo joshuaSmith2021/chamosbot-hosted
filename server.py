@@ -12,6 +12,13 @@ def home_page():
     return send_from_directory('templates', 'index.html')
 
 
+@app.route('/commands/<command_name>')
+@app.route('/commands/<command_name>/')
+def command(command_name):
+    data = tools.get_command(command_name)
+    return render_template('command.html', command=data)
+
+
 @app.route('/bedwars')
 @app.route('/bedwars/')
 def bedwars():
@@ -57,7 +64,7 @@ def bedwars():
             if username not in dataset.keys():
                 for field, lst in datasets.items():
                     datasets[field][usernames.index(username)]['data'].append(datasets[field][usernames.index(username)]['data'][-1])
-                
+
         for user, stats in filter(lambda x: x[0] in usernames, dataset.items()):
             user_index = usernames.index(user)
             bedwars = stats['Bedwars']
@@ -65,7 +72,7 @@ def bedwars():
             datasets['deaths'][user_index]['data'].append(bedwars['deaths_bedwars'])
             datasets['finals'][user_index]['data'].append(bedwars['final_kills_bedwars'])
             datasets['final_deaths'][user_index]['data'].append(bedwars['final_deaths_bedwars'])
-            datasets['kdrs'][user_index]['data'].append(round(bedwars['kills_bedwars'] / bedwars['deaths_bedwars'] * 1000) / 1000) 
+            datasets['kdrs'][user_index]['data'].append(round(bedwars['kills_bedwars'] / bedwars['deaths_bedwars'] * 1000) / 1000)
             datasets['fkdrs'][user_index]['data'].append(round(bedwars['final_kills_bedwars'] / bedwars['final_deaths_bedwars'] * 1000) / 1000)
             datasets['wins'][user_index]['data'].append(bedwars['wins_bedwars'])
             datasets['played'][user_index]['data'].append(bedwars['games_played_bedwars'])
