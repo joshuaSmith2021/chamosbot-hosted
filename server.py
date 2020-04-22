@@ -1,5 +1,6 @@
 import json
 import requests
+import yaml
 
 import tools
 
@@ -9,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return send_from_directory('templates', 'index.html')
+    return send_from_directory('static', 'index.html')
 
 
 @app.route('/commands/<command_name>')
@@ -138,8 +139,17 @@ def bedwars():
 
     time_string_conversions = {'today': '24 hours', 'twodays': '48 hours', 'thisweek': 'seven days', 'twoweeks': '14 days', 'thismonth': 'thirty days'}
 
+    statfiles = []
+    with open('data/statfiles.yaml') as stream:
+        try:
+            statfiles = yaml.safe_load(stream)
+        except yaml.YAMLError as err:
+            print(err)
+            statfiles = []
+
     datasets['table'] = json.dumps(performances)
     print('Rendering template...')
     return render_template('bedwars.html', display_times=json.dumps(display_times),
                            datasets=datasets, usernames=json.dumps(usernames),
-                           time_string=time_string_conversions[actual_file])
+                           time_string=time_string_conversions[actual_file],
+                           statfiles=statfiles)

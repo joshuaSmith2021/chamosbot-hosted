@@ -1,0 +1,36 @@
+---
+prefix: "!addkey"
+format: "!addkey <guild id> <api key>"
+sections:
+  - id: parameters
+    display: Parameters
+    innerHTML:
+      - type: p.cmd-section__text
+        content: The !addkey command has two parameters&#58; guild id and api key. Guild ID is the ID of the discord server to which you would like to add your API key. API key your Hypixel API key. Don't worry, this key will ONLY be used when someone in YOUR Discord server uses the bot, so don't worry about us abusing your key.
+  - id: examples
+    display: Examples
+    innerHTML:
+      - type: p.cmd-section__text
+        content: For reference, here is a list of some example commands, along with a description with what exactly the command would result in.
+      - type: ul.mdl-list
+        content:
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: vpn_key
+                  - type: span.code.compact
+                    content: "!addkey"
+                  - type: span.mdl-list__item-text-body
+                    content: Opens a direct message with ChamosBot, guiding you through the API key registration process.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: vpn_key
+                  - type: span.code.compact
+                    content: "!addkey 1234567890 12345678-9abc-4def-1234-56789abcdef"
+                  - type: span.mdl-list__item-text-body
+                    content: Adds 35ac3370-18df-465a-9c29-647ec6db370c to the Discord server with the id 1234567890.

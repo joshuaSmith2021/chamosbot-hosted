@@ -1,0 +1,11 @@
+---
+- filename: today
+  display : 24 Hours
+- filename: twodays
+  display : 48 Hours
+- filename: thisweek
+  display : 7 Days
+- filename: twoweeks
+  display : 14 Days
+- filename: thismonth
+  display : 30 Days

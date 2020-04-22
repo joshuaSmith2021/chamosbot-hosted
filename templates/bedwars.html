@@ -5,7 +5,7 @@
   <title>Hypixel Stats</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <style>
 .page-content {
@@ -23,7 +23,7 @@ h2 {
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Chamosbot Online</span>
+        <span class="mdl-layout-title">ChamosBot Online</span>
       </div>
       <!-- Tabs -->
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
@@ -41,14 +41,13 @@ h2 {
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Chamosbot Online</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="/">Select Usernames</a>
+        <a class="mdl-navigation__link" href="/">Home</a>
         <a id="timeChanger" class="mdl-navigation__link" href="#">Change Time Range</a>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect"
     for="timeChanger">
-          <li class="mdl-menu__item time-option" data-file="today">24 Hours</li>
-          <li class="mdl-menu__item time-option" data-file="twodays">48 Hours</li>
-          <li class="mdl-menu__item time-option" data-file="thisweek">Seven Days</li>
-          <li class="mdl-menu__item time-option" disabled>30 Days</li>
+          {% for statfile in statfiles %}
+          <li class="mdl-menu__item time-option" data-file="{{ statfile.filename }}">{{ statfile.display }}</li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
@@ -204,7 +203,7 @@ window.onload = function() {
   if (window.innerWidth < 650) {
     alert('It looks like you are viewing this page on a mobile device. For a better experience, please use view this page with your phone turned horizontally.');
   }
-  
+
   var usernames = {{ usernames | safe }};
 
   var statLinks = document.getElementsByClassName('time-option');
@@ -220,7 +219,7 @@ window.onload = function() {
       }
     });
   }
-    
+
   var tableData = {{ datasets.table | safe }};
 
   for (i = 0; i < tableData[0].length; i++) {
