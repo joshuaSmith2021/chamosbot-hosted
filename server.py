@@ -136,7 +136,7 @@ def bedwars():
         # put fields in json format for javascript to read later
         datasets[field] = json.dumps(lst)
 
-    time_string_conversions = {'today': '24 hours', 'twodays': '48 hours', 'thisweek': 'seven days'}
+    time_string_conversions = {'today': '24 hours', 'twodays': '48 hours', 'thisweek': 'seven days', 'twoweeks': '14 days', 'thismonth': 'thirty days'}
 
     datasets['table'] = json.dumps(performances)
     print('Rendering template...')
