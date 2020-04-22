@@ -1,0 +1,11 @@
+---
+- display: Home
+  href: "/"
+- display: "!stats"
+  href: "/commands/stats"
+- display: "!addkey"
+  href: "/commands/addkey"
+- display: "!revokekey"
+  href: "/commands/revokekey"
+- display: "!listkeys"
+  href: "/commands/listkeys"
