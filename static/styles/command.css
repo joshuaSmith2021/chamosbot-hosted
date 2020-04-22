@@ -25,3 +25,8 @@
 } .code.compact {
 	letter-spacing: -1px;
 }
+
+.command-icon {
+  color: #777777;
+  background-color: #ffffff;
+}
