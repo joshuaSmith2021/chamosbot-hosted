@@ -27,6 +27,6 @@
 }
 
 .command-icon {
-  color: #777777;
-  background-color: #ffffff;
+  color: #777777 !important;
+  background-color: #ffffff !important;
 }

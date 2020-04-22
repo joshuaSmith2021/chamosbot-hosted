@@ -31,6 +31,6 @@ sections:
                   - type: i.material-icons.mdl-list__item-avatar.command-icon
                     content: vpn_key
                   - type: span.code.compact
-                    content: "!addkey 1234567890 12345678-9abc-4def-1234-56789abcdef"
+                    content: "!addkey 1234567890 ABCHYPIXELKEY"
                   - type: span.mdl-list__item-text-body
-                    content: Adds 35ac3370-18df-465a-9c29-647ec6db370c to the Discord server with the id 1234567890.
+                    content: Adds ABCHYPIXELKEY to the Discord server with the id 1234567890.
