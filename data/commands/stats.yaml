@@ -11,7 +11,7 @@ sections:
     display: Flags
     innerHTML:
       - type: p.cmd-section__text
-        content: With some minigames, you can specify a specific game mode to pull stats from. For bedwars, the format for one of these flags is -<number of teams>_<players per team> . In SkyWars, it would be -<team size>_<insane/normal (optional)> For example, the flag for Bedwars solo would be -eight_one , because there are eight teams in the game, with each team having one player. The flag for team insane skywars would be -team_insane .
+        content: With some minigames, you can specify a specific game mode to pull stats from. For bedwars, the format for one of these flags is -&lt;number of teams&gt;_&lt;players per team&gt; . In SkyWars, it would be -&lt;team size&gt;_&lt;insane/normal (optional)&gt; For example, the flag for Bedwars solo would be -eight_one , because there are eight teams in the game, with each team having one player. The flag for team insane skywars would be -team_insane .
   - id: examples
     display: Examples
     innerHTML:

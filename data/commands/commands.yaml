@@ -7,3 +7,11 @@
   id: addkey
   icon: vpn_key
   description: Add a Hypixel API Key to a server.
+- prefix: "!revokekey"
+  id: revokekey
+  icon: delete
+  description: Revoke a server's access to your keys.
+- prefix: "!listkeys"
+  id: listkeys
+  icon: list
+  description: Get a list of servers to which the user's key is connected.

@@ -1,0 +1,26 @@
+---
+prefix: "!listkeys"
+format: "!listkeys"
+sections:
+  - id: parameters
+    display: Parameters
+    innerHTML:
+      - type: p.cmd-section__text
+        content: The !addkey command accepts no parameters.
+  - id: examples
+    display: Examples
+    innerHTML:
+      - type: p.cmd-section__text
+        content: For reference, here is an example command with a description of what the command would result in.
+      - type: ul.mdl-list
+        content:
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: list
+                  - type: span.code.compact
+                    content: "!listkeys"
+                  - type: span.mdl-list__item-text-body
+                    content: Sends the user a direct message with a list of each server to which they have a key connected.

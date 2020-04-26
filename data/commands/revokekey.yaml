@@ -1,0 +1,36 @@
+---
+prefix: "!revokekey"
+format: "!revokekey <guild id (optional)>"
+sections:
+  - id: parameters
+    display: Parameters
+    innerHTML:
+      - type: p.cmd-section__text
+        content: The !revokekey command has one optional parameters&#58; Guild ID. Guild ID is the ID of the Discord server from which you want to remove your key. If you message the bot directly, you must include the Guild ID. If you run the command in the server itself, no Guild ID is required.
+  - id: examples  
+    display: Examples
+    innerHTML:
+      - type: p.cmd-section__text
+        content: For reference, here is a list of some example commands, along with a description with in what exactly the command would result.
+      - type: ul.mdl-list
+        content:
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: delete
+                  - type: span.code.compact
+                    content: "!revokekey 1234567890"
+                  - type: span.mdl-list__item-text-body
+                    content: Removes all API keys provided by the user from the server with ID=1234567890.
+          - type: li.mdl-list__item.mdl-list__item--three-line
+            content:
+              - type: span.mdl-list__item-primary-content
+                content:
+                  - type: i.material-icons.mdl-list__item-avatar.command-icon
+                    content: delete
+                  - type: span.code.compact
+                    content: "!revokekey"
+                  - type: span.mdl-list__item-text-body
+                    content: Removes all API keys provided by the user from the server in which the command is run.
