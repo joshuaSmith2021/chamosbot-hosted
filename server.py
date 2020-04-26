@@ -12,7 +12,6 @@ app = Flask(__name__)
 def home_page():
     commands  = tools.parse_yaml('data/commands/commands.yaml')
     statfiles = tools.parse_yaml('data/statfiles.yaml')
-    print('Root called')
     return render_template('index.html', commands=commands, statfiles=statfiles)
 
 
