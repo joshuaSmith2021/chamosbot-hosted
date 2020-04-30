@@ -68,4 +68,4 @@ sections:
                   - type: span.code.compact
                     content: "!stats sw parcerx i41 -solo_insane"
                   - type: span.mdl-list__item-text-body
-                    content: Returns solo insane Bedwars stats for parcerx and i41.
+                    content: Returns solo insane Skywars stats for parcerx and i41.
