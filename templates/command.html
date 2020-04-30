@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>{{ command.prefix }} Command Reference</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/command.css') }}">
-	<link rel="stylesheet" href="../static/styles/command.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto+Mono">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -41,7 +41,7 @@
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content">
+        <div class="page-content" style="padding:0 15px">
           <h2 class="toc__title">{{ command.prefix }}</h2>
           <p class="toc__subtitle code">{{ command.format }}</p>
           <ul class="mdl-list toc">
