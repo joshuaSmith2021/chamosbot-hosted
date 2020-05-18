@@ -27,11 +27,12 @@ h2 {
       </div>
       <!-- Tabs -->
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-        <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Kills</a>
+        <a href="#scroll-tab-9" class="mdl-layout__tab is-active">Overview</a>
+        <a href="#scroll-tab-10" class="mdl-layout__tab">All Time</a>
+        <a href="#scroll-tab-1" class="mdl-layout__tab">Kills</a>
         <a href="#scroll-tab-2" class="mdl-layout__tab">Final Kills</a>
         <a href="#scroll-tab-3" class="mdl-layout__tab">KDR</a>
         <a href="#scroll-tab-6" class="mdl-layout__tab">FKDR</a>
-        <a href="#scroll-tab-9" class="mdl-layout__tab">Overview</a>
         <a href="#scroll-tab-4" class="mdl-layout__tab">Wins</a>
         <a href="#scroll-tab-5" class="mdl-layout__tab">Win Rate</a>
         <a href="#scroll-tab-7" class="mdl-layout__tab">KPG</a>
@@ -88,6 +89,16 @@ h2 {
           </p>
         </div>
       </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-10">
+        <div class="page-content">
+          <h2>All Time Stats</h2>
+          <div id="loadingBar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="margin:auto"></div>
+          <table class="mdl-data-table mdl-js-data-table" id="hiddenTable" style="margin:auto;visibility:hidden">
+            <thead><tr id="allTimeHead"></tr></thead>
+            <tbody id="allTimeBody"></tbody>
+          </table>
+        </div>
+      </section>
       <section class="mdl-layout__tab-panel" id="scroll-tab-4">
         <div class="page-content">
           <h2>Wins</h2>
@@ -116,7 +127,8 @@ h2 {
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
   <script>
-window.onload = function() {
+  // this snippet is strangely indented, if I felt like it I'd fix it...
+  // but I don't
   var ctx = {
     kills: document.querySelector('#killsChart').getContext('2d'),
     finals: document.querySelector('#finalsChart').getContext('2d'),
@@ -236,7 +248,7 @@ window.onload = function() {
     }
     specialTable.innerHTML += `<tr>${cells}</tr>`;
   }
-};
   </script>
+  <script src="{{ url_for('static', filename='script/get-bedwars.js') }}"></script>
 </body>
 </html>

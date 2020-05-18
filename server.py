@@ -4,7 +4,7 @@ import yaml
 
 import tools
 
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, Response
 
 app = Flask(__name__)
 
@@ -13,6 +13,22 @@ def home_page():
     commands  = tools.parse_yaml('data/commands/commands.yaml')
     statfiles = tools.parse_yaml('data/statfiles.yaml')
     return render_template('index.html', commands=commands, statfiles=statfiles)
+
+    
+@app.route('/plancke/<ign>')
+@app.route('/plancke/<ign>/')
+def get_plancke(ign):
+    res = Response()
+    url = 'https://plancke.io/hypixel/player/stats/{0}'.format(ign)
+    req = requests.get(url)
+    data = tools.get_bw_data(req.text)
+    if data == 'Invalid username':
+        res.status_code = 400
+    else:
+        res.status_code = 200
+        res.data = data
+
+    return res
 
 
 @app.route('/commands/<command_name>')
@@ -27,6 +43,11 @@ def command(command_name):
 def bedwars():
     # get a list of the usernames, make sure they are lowercase
     usernames = list(map(lambda x: x.lower(), request.args.get('igns').split('.')))
+    if usernames[-1] == '':
+        del usernames[-1]
+
+    all_usernames = usernames
+
     data_file = request.args.get('file')
     actual_file = data_file
 
@@ -54,6 +75,14 @@ def bedwars():
     datasets = {'kills': [], 'finals': [], 'kdrs': [], 'fkdrs': [],
                 'wins': [], 'winRate': [], 'kpg': [], 'fkpg': [],
                 'deaths': [], 'final_deaths': [], 'played': []}
+
+    # Find which usernames are in the current data, then filter usernames var
+    username_temp_list = []
+    for dataset in stat_file.values():
+        username_temp_list += dataset.keys()
+
+    recorded_usernames = list(set(username_temp_list))
+    usernames = [x for x in usernames if x in recorded_usernames]
 
     for field in datasets.keys():
         for username in usernames:
@@ -152,6 +181,6 @@ def bedwars():
     datasets['table'] = json.dumps(performances)
     print('Rendering template...')
     return render_template('bedwars.html', display_times=json.dumps(display_times),
-                           datasets=datasets, usernames=json.dumps(usernames),
+                           datasets=datasets, usernames=json.dumps(all_usernames),
                            time_string=time_string_conversions[actual_file],
                            statfiles=statfiles)

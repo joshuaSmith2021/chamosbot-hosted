@@ -1,5 +1,9 @@
+import requests
 import re
 import calendar
+import json
+
+from bs4 import BeautifulSoup
 import yaml
 
 def pretty_time(timestamp):
@@ -82,3 +86,52 @@ def get_command(name):
             command[i] = section
 
     return command
+
+
+def get_player_pages(igns):
+    # Get the Plancke page for each player
+    if type(igns) == ''.__class__:
+        igns = [igns]
+
+    urls = [f'https://plancke.io/hypixel/player/stats/{ign}' for ign in igns]
+    reqs = [requests.get(url) for url in urls]
+    return [x.text for x in reqs]
+
+
+def get_bw_data(page):
+    # Get Bedwars data from their Plancke page
+    soup = BeautifulSoup(page, features='html5lib')
+    bw_div = soup.find('div', {'id': 'stat_panel_BedWars'})
+
+    if bw_div is None:
+        return 'Invalid username'
+
+    bw_table = bw_div.findChild('table')
+
+    table = []
+    for row in [x for x in bw_table.descendants if x.name == 'tr'][1:]:
+        # for cell in row.children:
+        #     print(cell)
+        cells = [x for x in row.strings if x != '\n']
+        if cells == []:
+            continue
+
+        table.append(cells)
+
+    stats = {}
+    keys = table[0]
+    gamemodes = [x[0] for x in table][1:]
+    for row in table[1:]:
+        zipped = list(zip(keys, row))
+        gamemode = zipped[0][1]
+        current = {}
+        for key, stat in zipped[1:]:
+            if key not in current.keys():
+                current[key] = stat
+            else:
+                current['Final {0}'.format(key)] = stat
+
+        stats[gamemode] = current
+
+    return json.dumps(stats)
+
