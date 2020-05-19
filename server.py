@@ -14,7 +14,20 @@ def home_page():
     statfiles = tools.parse_yaml('data/statfiles.yaml')
     return render_template('index.html', commands=commands, statfiles=statfiles)
 
-    
+
+@app.route('/test/<ign>')
+@app.route('/test/<ign>/')
+def debugging(ign):
+    res = Response()
+    url = 'https://plancke.io/hypixel/player/stats/{0}'.format(ign)
+    req = requests.get(url)
+    data = tools.get_bw_data(req.text)
+    res.data = data
+    res.status_code = 200
+
+    return res
+
+
 @app.route('/plancke/<ign>')
 @app.route('/plancke/<ign>/')
 def get_plancke(ign):
@@ -24,6 +37,7 @@ def get_plancke(ign):
     data = tools.get_bw_data(req.text)
     if data == 'Invalid username':
         res.status_code = 400
+        res.data = 'Invalid username'
     else:
         res.status_code = 200
         res.data = data
