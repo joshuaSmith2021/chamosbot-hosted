@@ -120,7 +120,6 @@ def get_bw_data(page):
 
     stats = {}
     keys = table[0]
-    gamemodes = [x[0] for x in table][1:]
     for row in table[1:]:
         zipped = list(zip(keys, row))
         gamemode = zipped[0][1]
@@ -132,6 +131,14 @@ def get_bw_data(page):
                 current['Final {0}'.format(key)] = stat
 
         stats[gamemode] = current
+
+    bw_list  = bw_div.find('ul', class_='list-unstyled')
+    bw_level = 0
+    for li in bw_list.children:
+        if re.match('<li><b>Level:</b> [0-9,]+</li>', str(li)):
+            bw_level = re.search('[0-9,]+', str(li)).group()
+
+    stats['Overall']['Level'] = bw_level
 
     return json.dumps(stats)
 

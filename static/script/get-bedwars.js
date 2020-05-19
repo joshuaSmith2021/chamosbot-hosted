@@ -48,7 +48,7 @@ function getBedwarsData(datasets) {
     let result = [];
     let keyPattern = /\^[^^$]+\.[^^$]+\$/gi;
 
-    let rows = ['^Solo.Wins$ #Solo Wins', '^Doubles.Wins$ #Doubles Wins', '^3v3v3v3.Wins$ #3v3v3v3 Wins',
+    let rows = ['^Overall.Level$ #Star Level', '^Solo.Wins$ #Solo Wins', '^Doubles.Wins$ #Doubles Wins', '^3v3v3v3.Wins$ #3v3v3v3 Wins',
                 '^4v4v4v4.Wins$ #4v4v4v4 Wins', '^4v4.Wins$ #4v4 Wins', '^Overall.Wins$ #Total Wins', 
                 '^Overall.Wins$ / (^Overall.Wins$ + ^Overall.Losses$) #Win Rate', '^Overall.Kills$ #Kills', 
                 '^Overall.K/D$ #K/D', '^Overall.Final Kills$ #Final Kills', '^Overall.Final K/D$ #Final K/D', 
