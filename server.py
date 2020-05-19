@@ -15,15 +15,6 @@ def home_page():
     return render_template('index.html', commands=commands, statfiles=statfiles)
 
 
-@app.route('/test/<ign>')
-@app.route('/test/<ign>/')
-def debugging(ign):
-    res = Response()
-    url = 'https://plancke.io/hypixel/player/stats/{0}'.format(ign)
-    req = requests.get(url)
-    return req.text
-
-
 @app.route('/plancke/<ign>')
 @app.route('/plancke/<ign>/')
 def get_plancke(ign):

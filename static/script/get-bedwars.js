@@ -103,7 +103,10 @@ function getPlayerPages(igns) {
                 desiredLength -= 1;
             }
 
-            if (Object.keys(result).length === desiredLength) {
+            if (desiredLength === 0) {
+                document.querySelector('#allTimeButton').style.display = 'none';
+                document.querySelector('#scroll-tab-10').style.visibility = 'hidden';
+            } else if (Object.keys(result).length === desiredLength) {
                 // All users have data, move on to the next function
                 getBedwarsData(result);
             }
