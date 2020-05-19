@@ -53,7 +53,19 @@ h2 {
       </nav>
     </div>
     <main class="mdl-layout__content">
-      <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+      <section class="mdl-layout__tab-panel is-active" id="scroll-tab-9">
+        <div class="page-content">
+          <h2>Overview</h2>
+          <table class="mdl-data-table mdl-js-data-table" style="margin:auto">
+            <thead><tr id="tableHead"></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <p style="max-width:400px;margin:auto">
+            This tab shows the stats of the player(s) in the past {{ time_string }}. Each row in the table shows the amount of kills, wins, etc. in the past {{ time_string}}. KDR, FKDR, Win%, and any other ratios represent the amount of (in the case of FKDR, for example), finals kills in the past {{ time_string }} divided by the amount of final deaths in the past {{ time_string }}.
+          </p>
+        </div>
+      </section>
+      <section class="mdl-layout__tab-panel" id="scroll-tab-1">
         <div class="page-content">
           <h2>Kills</h2>
           <canvas id="killsChart"></canvas>
@@ -75,18 +87,6 @@ h2 {
         <div class="page-content">
           <h2>Final Kill/Death Ratio</h2>
           <canvas id="fkdrsChart"></canvas>
-        </div>
-      </section>
-      <section class="mdl-layout__tab-panel" id="scroll-tab-9">
-        <div class="page-content">
-          <h2>Overview</h2>
-          <table class="mdl-data-table mdl-js-data-table" style="margin:auto">
-            <thead><tr id="tableHead"></tr></thead>
-            <tbody id="tableBody"></tbody>
-          </table>
-          <p style="max-width:400px;margin:auto">
-            This tab shows the stats of the player(s) in the past {{ time_string }}. Each row in the table shows the amount of kills, wins, etc. in the past {{ time_string}}. KDR, FKDR, Win%, and any other ratios represent the amount of (in the case of FKDR, for example), finals kills in the past {{ time_string }} divided by the amount of final deaths in the past {{ time_string }}.
-          </p>
         </div>
       </section>
       <section class="mdl-layout__tab-panel" id="scroll-tab-10">
