@@ -21,11 +21,7 @@ def debugging(ign):
     res = Response()
     url = 'https://plancke.io/hypixel/player/stats/{0}'.format(ign)
     req = requests.get(url)
-    data = tools.get_bw_data(req.text)
-    res.data = data
-    res.status_code = 200
-
-    return res
+    return req.text
 
 
 @app.route('/plancke/<ign>')
